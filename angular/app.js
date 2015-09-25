@@ -1,0 +1,142 @@
+ (function(){
+	var app = angular.module('store', []);  // the module
+
+	app.controller('StoreController', function(){   // controller
+		this.products = cats; 				// property of the controller
+	});
+
+	app.controller('TabController', function(){
+		this.tab = 1;
+
+		this.setTab = function(newValue) {
+			this.tab = newValue;
+		};
+		this.isSet = function(tabName) {
+			return this.tab === tabName;
+		};
+	});
+
+      app.controller('GalleryController', function(){  // Add a method to GalleryController called setCurrent that accepts
+        this.current = 0;					 // a value and assigns it to current. If no value is passed in, set current to 0.
+
+	    this.setCurrent = function(index){
+	      this.current = index;
+        };
+      });
+
+      app.controller('ReviewController', function(){  // Add a method to GalleryController called setCurrent that accepts
+        this.review = {};
+
+        this.addReview = function(product) {
+      	this.review.createdOn = Date.now();
+        	product.reviews.push(this.review); 		// Push review onto 'this' product's reviews array
+        	this.review = {};					// Clear out the review, so the form will reset
+        };
+      });
+
+		var cats = [
+		{
+			name: 'Ocelot Collection',
+			price: 21.99,
+			description: 'Collect your very own Ocelot collection from the popular game that is Minecraft.  Bed included :)',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 10,
+			type: 'collection',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: true,
+		      images: [
+		        "images/cat-02.png",
+		      ],
+		      reviews: [{
+		        stars: 5,
+		        body: "These cats are awesome!",
+		        author: "joe@example.org",
+		        createdOn: 1397490980837
+		      }, {
+		        stars: 1,
+		        body: "These cats suck!",
+		        author: "tim@example.org",
+		        createdOn: 1397490980837
+		      }]
+		},
+		{
+			name: 'Ocelot-001',
+			price: 15.95,
+			description: 'Ocelots are passive mobs that spawn in jungle biomes. They are the second tameable mob to be introduced into Minecraft, the first being Wolves, and the third being horses. They are based on the animal with same name. When tamed, they become cats, and will change skins. Cats will follow the Player and will teleport if they are too far away.',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 6,
+			type: 'leopard',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: false,
+		      images: [
+		        "images/ocelot-02.png",
+		      ],
+		      reviews: [{
+		        stars: 1,
+		        body: "These cats suck!",
+		        author: "joe@example.org",
+		        createdOn: 1397490980837
+		      }, {
+		        stars: 1,
+		        body: "These cats suck!",
+		        author: "tim@example.org",
+		        createdOn: 1397490980837
+		      }]
+		},
+		{
+			name: 'Ocelot-002',
+			price: 25.95,
+			description: 'Ocelots are passive mobs that spawn in jungle biomes. They are the second tameable mob to be introduced into Minecraft, the first being Wolves, and the third being horses. They are based on the animal with same name. When tamed, they become cats, and will change skins. Cats will follow the Player and will teleport if they are too far away.',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 8,
+			type: 'cheetah',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: true,
+		      images: [
+		        "images/ocelot-02.png",
+		      ],
+		      reviews: []
+		},
+		{
+			name: 'Ocelot-003',
+			price: 5.95,
+			description: 'Ocelots are passive mobs that spawn in jungle biomes. They are the second tameable mob to be introduced into Minecraft, the first being Wolves, and the third being horses. They are based on the animal with same name. When tamed, they become cats, and will change skins. Cats will follow the Player and will teleport if they are too far away.',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 2,
+			type: 'black-suit',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: true,
+		      images: [
+		        "images/ocelot-02.png",
+		      ],
+		      reviews: []
+		},
+		{
+			name: 'Ocelot-004',
+			price: 10.25,
+			description: 'Ocelots are passive mobs that spawn in jungle biomes. They are the second tameable mob to be introduced into Minecraft, the first being Wolves, and the third being horses. They are based on the animal with same name. When tamed, they become cats, and will change skins. Cats will follow the Player and will teleport if they are too far away.',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 12,
+			type: 'siamese',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: false,
+		      images: [
+		        "images/ocelot-02.png",
+		      ],
+		      reviews: []
+		},
+		{
+			name: 'Ocelot-005',
+			price: 45.99,
+			description: 'Ocelots are passive mobs that spawn in jungle biomes. They are the second tameable mob to be introduced into Minecraft, the first being Wolves, and the third being horses. They are based on the animal with same name. When tamed, they become cats, and will change skins. Cats will follow the Player and will teleport if they are too far away.',
+			appear: 'When untamed, these felines have yellow fur with black and brown spots, a gray-black nose, and green eyes. Once tamed, their fur will change to either ginger tabby, tuxedo, or Siamese.',
+			rarity: 1,
+			type: 'calico',
+			spawn: 'Ocelots spawn much like other passive mobs, but only in jungle biomes. Ocelots need grass blocks or leaves to spawn at layer 63 or higher. Since they are only native to jungle biomes, ocelots will tend to spawn in inaccessible areas, such as inside bushes. They may wander into other biomes that are close to the jungle biome, so one may be seen outside of its native biome. They also have a 1/3 chance of not actually spawning, making them somewhat uncommon.',
+			canPurchase: true,
+		      images: [
+		        "images/ocelot-02.png",
+      ],
+      reviews: []
+    }];
+})();

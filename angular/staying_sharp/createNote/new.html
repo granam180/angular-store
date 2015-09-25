@@ -1,0 +1,22 @@
+<div class="new-note">
+  <div class="new-note-container">
+    <form class="form">
+      <fieldset>
+        <label for="title">Title</label>
+        <input name="title" ng-model="note.title"/>
+      </fieldset>
+
+      <fieldset>
+        <label for="description">Description</label>
+        <textarea name="description" ng-model="note.description"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label for="content">Content</label>
+        <textarea name="content" ng-model="note.content"></textarea>
+      </fieldset>
+
+      <button class="btn" ng-click="newNotesCtrl.saveNote(note)">Save</button>
+    </form>
+  </div>
+</div>

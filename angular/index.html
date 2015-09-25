@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="products.js"></script>
+	</head>
+	<body ng-controller="StoreController as store">
+	<header>
+      <h2 class="text-center well"> Minecrafted Animals - kittie edition </h2>
+    </header>
+	<!-- dom element -->
+    <div class="list-group">
+		<div class="list-group-item" ng-repeat="product in store.products">
+			<h1> {{product.name}} </h1>
+			<h2> $ {{product.price}} </h2></br>
+		<!--	<p> {{product.description}} </p>  -->
+			<button ng-show="product.canPurchase"> Add to Cart </button>
+		<!-- end of dom element -->
+		<!--							===========  Having troubles implementing custom directive here
+										===========  so I may have to just have to keep the original TabController
+										===========  while I try and fix for now
+		<product-tabs></product-tabs>
+
+		</div>
+	</div>
+	-->
+
+
+			<section ng-controller="TabController as tab">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active: tab.isSet(1) }">
+					<a href="" ng-click="tab.setTab(1)">Description</a>
+				</li>
+				<li ng-class="{ active: tab.isSet(2) }">
+					<a href="" ng-click="tab.setTab(2)">Spawning</a>
+				</li>
+				<li ng-class="{ active: tab.isSet(3) }">
+					<a href="" ng-click="tab.setTab(3)">Appearance</a>
+				</li>
+				<li ng-class="{ active: tab.isSet(4) }">
+					<a href="" ng-click="tab.setTab(4)">Reviews</a>
+				</li>
+			</ul>
+
+			<div ng-show="tab.isSet(1)">
+				<h3>Description</h3>
+				<blockquote> {{product.description}} </blockquote>
+			</div>
+			<div ng-show="tab.isSet(2)">
+				<h3>Spawning</h3>
+				<blockquote> {{product.spawn}} </blockquote>
+			</div>
+			<div ng-show="tab.isSet(3)">
+				<h3>Appearance</h3>
+		      <!-- Image Gallery -->
+		        <div ng-controller="GalleryController as gallery"  ng-show="product.images.length">
+		          <div class="img-responsive thumbnail">
+		            <img ng-src="{{product.images[gallery.current]}}" />
+		          </div>
+		        </div>
+			</div>
+
+	        <!--  Review Tab's Content  -->
+	          <div ng-show="tab.isSet(4)">
+			<h4> Reviews </h4>
+	            <!--  Product Reviews List -->
+	            <ul>
+	              <li ng-repeat="review in product.reviews">
+	                <blockquote>
+	                  <strong>{{review.stars}} Stars</strong>
+	                  {{review.body}}
+	                  <cite class="clearfix">-- {{review.author}} on {{review.createdOn | date:'MM/dd/yyyy @ h:mma'}} --</cite>
+	                </blockquote>
+	              </li>
+	            </ul>
+
+	            <!--  Review Form -->
+	            <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+	            				ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+
+	              <!--  Live Preview -->
+	              <blockquote>
+	                <strong>{{reviewCtrl.review.stars}} Stars</strong>
+	                {{reviewCtrl.review.body}}
+	                <cite class="clearfix">{{reviewCtrl.review.author}}</cite>
+	              </blockquote>
+
+	              <!--  Review Form -->
+	              <h4>Submit a Review</h4>
+	              <fieldset class="form-group">
+	                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+	                  <option value="">Rate the Product</option>
+	                </select>
+	              </fieldset>
+	              <fieldset class="form-group">
+	                <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+	              </fieldset>
+	              <fieldset class="form-group">
+	                <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required />
+	              </fieldset>
+	              <fieldset class="form-group">
+	                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+	              </fieldset>
+	            </form>
+	          </div>
+		</section>
+		</div>
+	</div>
+
+	<div class="pull-right">
+		<img src="images/cat-01.png" />
+		<h6 class="lead">Minecraft Kitties &copy; 2014</h6>
+	</div>
+	</body>
+</html>

@@ -1,6 +1,9 @@
 # angular-store
 
-Demoing my angular knowledge with a digital kitten store based on Minecraft Ocelots.
+Demo of some angularJS skills -- a responsive store based on Minecraft Ocelots, or <em>digital kitties</em>.
 
-I have also added an angular_custom folder which has an implentation for a custom-directive for tabular navigation.  Still working it out
-Sad News: you cannot add them to any cart as this is just an example :'(
+I've implemented a <a href="https://github.com/granam180/angular-store/tree/master/angular/angular_custom>angular_custom/</a>" folder as there is still some work to fix a custom-directive.  I'm told it could be scope related.  Check back soon for that.
+
+#Sad News 
+
+You cannot add them to any cart as this is just an example :'(
